@@ -1,7 +1,7 @@
 __author__ = 'bdknijf'
 import json
-#import urllib2
-import requests
+import urllib2
+
 
 new_droplet = {
   "name": "test_api",
@@ -19,13 +19,10 @@ url = "https://api.digitalocean.com/v2/droplets"
 headers = {'Content-Type': 'application/json',
             'Authorization': 'Bearer 6eb18afa72476ffa38a925eb0223d817c08a8db11d0fc9df371b78093b19fd0d'}
 
-r = requests.post(url, data=json.dumps(new_droplet), headers=headers)
+req = urllib2.Request("https://api.digitalocean.com/v2/droplets")
+req.add_header('Content-Type', 'application/json')
+req.add_header('Authorization', 'Bearer 6eb18afa72476ffa38a925eb0223d817c08a8db11d0fc9df371b78093b19fd0d')
 
+data = json.dumps(new_droplet)
 
-r = requests.get(url)
-
-
-#req = urllib2.Request("https://api.digitalocean.com/v2/droplets")
-#req.add_header('Content-Type', 'application/json')
-#req.add_header('Authorization', 'Bearer 6eb18afa72476ffa38a925eb0223d817c08a8db11d0fc9df371b78093b19fd0d')
-
+urllib2.urlopen()
